@@ -1,0 +1,141 @@
+
+
+<!-- <h1>admin login</h1>
+
+<% if (typeof message !== 'undefined') { %>
+    <h3>message</h3>
+<% } %>
+
+<form action="/admin" method="POST">
+    <input type="email" name="email" placeholder="enter email">
+    <br><br>
+    <input type="password" name="password" placeholder="enter password">
+    <br><br>
+    <input type="submit" value="login">
+</form>  -->
+
+
+
+ <% include('../layouts/header.ejs') %>
+<style>
+    body {
+        background-color: black;
+        color: #333;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        color: cyan;
+        margin-top: 0; 
+    }
+
+    form {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: black;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid cyan;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+        background-color: cyan;
+        color: grey;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: white;
+    }
+
+    .message {
+        color: red;
+    }
+</style>
+
+<h1>Admin Login</h1>
+
+<% if (typeof message !== 'undefined') { %>
+    <p class="message"><%= message %></p>
+<% } %>
+
+<form action="/admin" method="POST" id="form">
+    <input type="email" id="email"  name="email" placeholder="Enter email">
+    <br><br>
+    <input type="password" id="password"  name="password" placeholder="Enter password">
+    <br><br>
+    <input type="submit" value="Login">
+</form>  
+
+<% include('../layouts/footer.ejs') %>
+
+
+
+<script>
+  let form = document.getElementById("form");
+  let error = document.getElementById("error");
+  let message = [];
+
+  form.addEventListener("submit", (e) => {
+    message = [];
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    email_validate(email);
+
+    if (password.length < 3) {
+      message.push("Password should be at least 3 characters");
+    }
+
+    if (message.length > 0) {
+      e.preventDefault();
+      error.innerText = message[0];
+    }
+  });
+
+  function email_validate(email) {
+    let reg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    let result = reg.test(email);
+    if (!result) {
+      message.push("Invalid Email");
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

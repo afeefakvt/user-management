@@ -1,0 +1,166 @@
+<!-- 
+<% include('../layouts/header.ejs') %>
+
+<h1>Login</h1>
+
+<%
+if(typeof message !=='undefined'){
+    %>
+    <h4><%= message %></h4>
+    <%
+}
+
+
+%>
+
+<form action="/login" method="post">
+    <input type="email" name="email" required placeholder="enter email">
+    <br><br>
+    <input type="password" name="password" required placeholder="enter password">
+    <br><br>
+    <input type="submit" value="Login">
+
+
+</form>
+
+<span> Don't have an account ? Please sign up! </span>
+<br>
+<a href="/register"> <button> Register</button></a>
+
+<% include('../layouts/footer.ejs') %> -->
+
+
+
+
+
+
+
+
+<% include('../layouts/header.ejs') %>
+<style>
+    body {
+        background-color: #f8f9fa;
+        color: #333;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        color: #007bff;
+        margin-top: 0;
+    }
+
+    form {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    span {
+        margin-top: 10px;
+        color: #888;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #007bff;
+        background-color: transparent;
+        color: #007bff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
+
+<h1>Login</h1>
+<div id="error" class="text-center text-warning"></div>
+
+<%
+if(typeof message !=='undefined'){
+    %>
+    <h4><%= message %></h4>
+    <%
+}
+%>
+
+<form action="/login" method="post" id="form">
+    <input type="email" id="email" name="email" required placeholder="Enter email">
+    <br><br>
+    <input type="password" id="password" name="password" required placeholder="Enter password">
+    <br><br>
+    <input type="submit" value="Login">
+</form>
+
+<span>Don't have an account? Please sign up!</span>
+<br>
+<a href="/register"><button>Register</button></a>
+
+<% include('../layouts/footer.ejs') %>
+
+<script>
+  let form = document.getElementById("form");
+  let error = document.getElementById("error");
+  let message = [];
+
+  form.addEventListener("submit", (e) => {
+    message = [];
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    email_validate(email);
+
+    if (password.length < 3) {
+      message.push("Password should be at least 3 characters");
+    }
+
+    if (message.length > 0) {
+      e.preventDefault();
+      error.innerText = message[0];
+    }
+  });
+
+  function email_validate(email) {
+    let reg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    let result = reg.test(email);
+    if (!result) {
+      message.push("Invalid Email");
+    }
+  }
+</script>

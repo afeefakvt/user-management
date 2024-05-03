@@ -1,0 +1,108 @@
+<!-- <% include('../layouts/header.ejs') %>
+<h1>add new user</h1>
+
+<form action="/admin/addUser" method="post" enctype="multipart/form-data">
+<input type="text" name="name" placeholder="enter name" required>
+<br><br>
+<input type="email" name="email" placeholder="enter email" required>
+<br><br>
+<input type="text" name="mobileno" placeholder="enter mobile" required>
+<br><br>
+<input type="password" name="password" placeholder="enter password" required>
+<br><br>
+<input type="file" name="image"  required>
+<br><br>
+<input type="submit" value="add user" >
+</form>
+
+
+<% if(typeof message !=='undefined'){
+    %>
+    <p style="color: red;"><%= message%></p>
+    <%
+}
+    %>
+
+<a href="/admin/dashboard">go back</a>
+
+
+<% include('../layouts/footer.ejs') %> -->
+
+
+
+
+<% include('../layouts/header.ejs') %>
+<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        color: cyan;
+        margin-top: 0; /* Remove default margin */
+    }
+
+    form {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="file"],
+    input[type="submit"] {
+        padding: 10px;
+        border: 1px solid cyan;
+        background-color: black;
+        color: cyan;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 300px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: cyan;
+        color: black;
+        cursor: pointer;
+    }
+
+    p {
+        color: red;
+    }
+
+    a {
+        color: cyan;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<h1>Add New User</h1>
+
+<form action="/admin/addUser" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Enter name" required><br><br>
+    <input type="email" name="email" placeholder="Enter email" required><br><br>
+    <input type="text" name="mobileno" placeholder="Enter mobile" required><br><br>
+    <input type="password" name="password" placeholder="Enter password" required><br><br>
+    <input type="file" name="image" required><br><br>
+    <input type="submit" value="Add User">
+</form>
+
+<% if (typeof message !== 'undefined') { %>
+    <p><%= message %></p>
+<% } %>
+
+<a href="/admin/dashboard">Go Back</a>
+
+<% include('../layouts/footer.ejs') %>

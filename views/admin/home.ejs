@@ -1,0 +1,108 @@
+<!-- <% include('../layouts/header.ejs')%>
+
+
+<h1>welcome,<%= admin.name %></h1>
+<a href="/admin/dashboard">dashboard</a>
+
+<table style="width:50%">
+    <tr>
+        <td><img src="/userImages/<%= admin.image%>" width="100px" height="120px" alt="<%= admin.image %>"></td>
+    </tr>
+    <tr>
+        <td>email</td>
+        <td><%= admin.email %></td>
+    </tr>
+    <tr>
+        <td>mobile</td>
+        <td><%= admin.mobile %></td>
+    </tr>
+
+</table>
+
+<a href="/admin/logout">logout</a>
+
+
+
+<% include('../layouts/footer.ejs') %> -->
+
+
+
+
+
+ 
+
+<% include('../layouts/header.ejs') %>
+<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        color: cyan;
+        margin-top: 0; /* Remove default margin */
+    }
+
+    table {
+        width: 50%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    td img {
+        width: 100px;
+        height: 120px;
+    }
+
+    td {
+        padding: 10px;
+        border: 1px solid cyan;
+    }
+
+    a {
+        color: cyan;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<h1>Welcome, <%= admin.name %></h1>
+<a href="/admin/dashboard">Dashboard</a>
+
+<table>
+    <tr>
+        <td><img src="/userImages/<%= admin.image %>" alt="<%= admin.image %>"></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= admin.email %></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= admin.mobile %></td>
+    </tr>
+</table>
+<br>
+
+<a href="/admin/logout">Logout</a>
+
+<% include('../layouts/footer.ejs') %>
+
+
+
+
+
+
+
+
+
+

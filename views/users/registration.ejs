@@ -1,0 +1,174 @@
+<!-- <% include('../layouts/header.ejs') %> -->
+
+<!-- <h1>User Registration Form</h1>
+<form action="" method="post" enctype="multipart/form-data">
+<input type="text" name="name" placeholder="enter name" required>
+<br><br>
+<input type="email" name="email" placeholder="enter email" required>
+<br><br>
+<input type="text" name="mobileno" placeholder="enter mobile" required>
+<br><br>
+<input type="file" name="image"  required>
+<br><br>
+<input type="password" name="password" placeholder="enter password" required>
+<br><br>
+<input type="submit" value="register" >
+</form>
+
+
+<% if(typeof message !=='undefined'){
+    %>
+    <p style="color: green;"><%= message%></p>
+    <%
+}
+    %> -->
+
+
+
+
+
+
+<% include('../layouts/header.ejs') %>
+<style>
+    body {
+        background-color: #f8f9fa;
+        color: #333;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        color: #007bff;
+        margin-top: 0;
+    }
+
+    form {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="file"],
+    input[type="submit"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .message {
+        color: green;
+    }
+
+    button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #007bff;
+        background-color: transparent;
+        color: #007bff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
+
+<h1>User Registration Form</h1>
+<div id="error" class="text-center text-warning"></div>
+<form action="" method="post" enctype="multipart/form-data" id="form">
+    <input type="text" id="name" name="name" placeholder="Enter name" required>
+    <br><br>
+    <input type="email" id="email" name="email" placeholder="Enter email" required>
+    <br><br>
+    <input type="text" id="mobile" name="mobileno" placeholder="Enter mobile" required>
+    <br><br>
+    <input type="file" name="image" required>
+    <br><br>
+    <input type="password" id="password" name="password" placeholder="Enter password" required>
+    <br><br>
+    <input type="submit" value="Register">
+</form>
+
+
+<span>Already have an acoount? Login!</span>
+<br>
+<a href="/login"><button>Login</button></a>
+
+
+<% if (typeof message !== 'undefined') { %>
+    <p class="message"><%= message %></p>
+<% } %>
+
+<% include('../layouts/footer.ejs') %>
+
+
+<script>
+  let form = document.getElementById("form");
+  let error = document.getElementById("error");
+  let message = [];
+  let name_reg = /^[a-zA-Z ]+$/;
+  let mobile_reg = /^\d{10}$/;
+
+  form.addEventListener("submit", (e) => {
+    message = [];
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    if (!name_reg.test(name)) {
+      message.push("Invalid Name");
+    }
+
+    email_validate(email);
+
+    if (!mobile_reg.test(mobile)) {
+      message.push("Mobile Number should be 10 digit numbers");
+    }else if(mobile==="0000000000"){
+      message.push("phone number cannot be all zeros");
+    }
+
+    
+
+    if (password.length < 3) {
+      message.push("Password should be at least 3 characters");
+    }
+
+    if (message.length > 0) {
+      e.preventDefault();
+      error.innerText = message[0];
+    }
+  });
+
+  function email_validate(email) {
+    let reg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    let result = reg.test(email);
+    if (!result) {
+      message.push("Invalid Email");
+    }
+  }
+</script>

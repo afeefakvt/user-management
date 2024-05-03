@@ -1,0 +1,93 @@
+<!-- <% include('../layouts/header.ejs') %>
+
+<img src="userImages/<%= user.image%>" width="100px" height="125px" alt="<%= user.image %>">
+<form action="/edit/<%= user._id %>" method="POST" enctype="multipart/form-data">
+
+<br>
+<input type="file" name="image">
+<input type="hidden" name="user_id" value="<%= user._id %>">
+<br><br>
+<input type="text" name="name" value="<%= user.name %>" placeholder="enter name"required>
+<br><br>
+<input type="email" name="email" value="<%= user.email %>" placeholder="enter email"required>
+<br><br>
+<input type="text" name="mobileno" value="<%= user.mobile %>" placeholder="enter mobile"required>
+<br><br>
+<input type="submit" value="update profile">
+</form>
+ 
+ 
+
+
+<% include('../layouts/footer.ejs') %> -->
+
+
+
+
+
+<% include('../layouts/header.ejs') %>
+<style>
+    body {
+        background-color: #f3f3f3;
+        color: #333;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    img {
+        width: 100px;
+        height: 125px;
+        border-radius: 8px;
+    }
+
+    form {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="file"],
+    input[type="text"],
+    input[type="email"],
+    input[type="submit"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<img src="userImages/<%= user.image %>" alt="<%= user.image %>">
+<form action="/edit/<%= user._id %>" method="POST" enctype="multipart/form-data">
+    <br>
+    <input type="file" name="image">
+    <input type="hidden" name="user_id" value="<%= user._id %>">
+    <br><br>
+    <input type="text" name="name" value="<%= user.name %>" placeholder="Enter name" required>
+    <br><br>
+    <input type="email" name="email" value="<%= user.email %>" placeholder="Enter email" required>
+    <br><br>
+    <input type="text" name="mobileno" value="<%= user.mobile %>" placeholder="Enter mobile" required>
+    <br><br>
+    <input type="submit" value="Update Profile">
+</form>
+
+<% include('../layouts/footer.ejs') %>

@@ -1,0 +1,163 @@
+<!-- <% include("../layouts/header.ejs") %>
+<h1>Dashboard</h1>
+
+<a href="/admin/new-user">add new user</a>
+<br><br>
+
+<table width="50%">
+    <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>mobile</th>
+        <th>image</th>
+        <th>actions</th>
+    </tr>
+
+    <% if (users.length > 0) { %>
+        <% for (let i = 0; i < users.length; i++) { %>
+            <tr>
+                <td><%= users[i].name %></td>
+                <td><%= users[i].email %></td>
+                <td><%= users[i].mobile %></td>
+                <td><img src="/userImages/<%= users[i].image %>" alt="<%= users[i].image %>" width="100px" height="120px"></td>
+                <td> <a href="/admin/edit_user?id=<%=users[i]._id %>">Edit</a></td>
+                <td> <a href="/admin/delete_user?id=<%=users[i]._id %>">delete</a></td>
+
+            </tr>
+        <% } %>
+    <% } else { %>
+        <tr>
+            <td colspan="5">users not found</td>
+        </tr>
+    <% } %>
+</table>
+
+<br>
+<a href="/admin/home">go to home</a>  -->
+
+
+
+
+
+
+<% include("../layouts/header.ejs") %>
+<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    h1 {
+        color: cyan;
+        margin-top: 0; /* Remove default margin */
+    }
+
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid cyan;
+    }
+
+    th {
+        background-color: cyan;
+        color: black;
+    }
+
+    td img {
+        width: 100px;
+        height: 120px;
+    }
+
+    a {
+        color: cyan;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Style for the search form */
+    .search-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-input {
+        flex: 1;
+        margin-right: 10px;
+        padding: 5px;
+        border: 1px solid cyan;
+        background-color: transparent;
+        color: cyan;
+    }
+
+    .search-button {
+        padding: 5px 10px;
+        border: 1px solid cyan;
+        background-color: transparent;
+        color: cyan;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-button:hover {
+        background-color: cyan;
+        color: black;
+        cursor: pointer;
+    }
+</style>
+
+<h1>Dashboard</h1>
+
+<a href="/admin/new-user">Add New User</a>
+<br><br>
+
+<form class="search-form" id="srch-frm" role="search">
+    <input id="srch-inp" class="search-input" type="search" value="<%= srchVal %>" name="search" placeholder="Search" aria-label="Search">
+    <button class="search-button" type="submit">Search</button>
+</form>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+
+    <% if (users.length > 0) { %>
+        <% for (let i = 0; i < users.length; i++) { %>
+            <tr>
+                <td><%= users[i].name %></td>
+                <td><%= users[i].email %></td>
+                <td><%= users[i].mobile %></td>
+                <td><img src="/userImages/<%= users[i].image %>" alt="<%= users[i].image %>"></td>
+                <td>
+                    <a href="/admin/edit_user?id=<%= users[i]._id %>">Edit</a>
+                    <a onclick="return confirm('Are you sure?')" href="/admin/delete_user?id=<%= users[i]._id %>">Delete</a>
+                </td>
+            </tr>
+        <% } %>
+    <% } else { %>
+        <tr>
+            <td colspan="5">Users not found</td>
+        </tr>
+    <% } %>
+</table>
+
+<br>
+<a href="/admin/home">Go to Home</a>
+
+<%- include("../layouts/footer.ejs") %>
